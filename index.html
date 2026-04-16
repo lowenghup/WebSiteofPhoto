@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .hero-gradient {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1493246507139-91e8bef99c02?auto=format&fit=crop&q=80&w=1920');
+            background: linear-gradient(rgba(17, 24, 39, 0.7), rgba(17, 24, 39, 0.9)), url('https://images.unsplash.com/photo-1493246507139-91e8bef99c02?auto=format&fit=crop&q=80&w=1920');
             background-size: cover;
             background-position: center;
         }
@@ -25,112 +25,119 @@
             <span>WebSiteofPhoto</span>
         </div>
         <div class="hidden md:flex space-x-8 text-sm font-medium">
-            <a href="#features" class="hover:text-blue-400 transition">Features</a>
-            <a href="#about" class="hover:text-blue-400 transition">About</a>
+            <a href="#gallery" class="hover:text-blue-400 transition">Gallery</a>
             <a href="https://github.com/lowenghup/WebSiteofPhoto" class="hover:text-blue-400 transition">GitHub</a>
         </div>
-        <a href="https://github.com/lowenghup/WebSiteofPhoto" class="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-full text-sm font-semibold transition">
-            Deploy Now
-        </a>
+        <!-- Upload Trigger Button (Top Nav) -->
+        <label for="file-upload" class="cursor-pointer bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-full text-sm font-semibold transition">
+            <i class="fas fa-upload mr-2"></i> Upload Photo
+        </label>
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero-gradient h-[80vh] flex items-center justify-center text-center px-4">
+    <header class="hero-gradient h-[60vh] flex items-center justify-center text-center px-4">
         <div class="max-w-3xl">
             <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">Your memories, <span class="text-blue-500">privately</span> hosted.</h1>
-            <p class="text-xl text-gray-300 mb-10 leading-relaxed">
-                WebSiteofPhoto is a lightweight, high-performance personal photo server. Take control of your media without the monthly fees or privacy concerns of big-tech clouds.
-            </p>
+            
+            <!-- Hidden File Input -->
+            <input type="file" id="file-upload" class="hidden" accept="image/*" multiple onchange="previewImages(event)">
+            
             <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <a href="https://github.com/lowenghup/WebSiteofPhoto" class="bg-white text-black px-8 py-4 rounded-xl font-bold hover:bg-gray-200 transition">
-                    <i class="fab fa-github mr-2"></i> View on GitHub
-                </a>
-                <a href="#features" class="bg-transparent border border-gray-500 px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition">
-                    Explore Features
+                <label for="file-upload" class="cursor-pointer bg-white text-black px-8 py-4 rounded-xl font-bold hover:bg-gray-200 transition flex items-center justify-center">
+                    <i class="fas fa-cloud-upload-alt mr-2 text-xl"></i> Start Uploading
+                </label>
+                <a href="#gallery" class="bg-transparent border border-gray-500 px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition">
+                    View Gallery
                 </a>
             </div>
+            <p class="mt-4 text-gray-400 text-sm italic">Note: In this demo, uploads stay in your browser until you refresh.</p>
         </div>
     </header>
 
-    <!-- Features Section -->
-    <section id="features" class="py-24 px-8 max-w-7xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Why WebSiteofPhoto?</h2>
-            <div class="h-1 w-20 bg-blue-500 mx-auto"></div>
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 px-8 max-w-7xl mx-auto">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <h2 class="text-3xl font-bold mb-2">Photo Gallery</h2>
+                <div class="h-1 w-20 bg-blue-500"></div>
+            </div>
+            <span id="photo-count" class="text-gray-400 text-sm">0 Photos</span>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-12">
-            <!-- Feature 1 -->
-            <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700 hover:border-blue-500 transition group">
-                <div class="bg-blue-500/10 w-12 h-12 flex items-center justify-center rounded-lg mb-6 group-hover:bg-blue-500 transition">
-                    <i class="fas fa-shield-alt text-blue-500 group-hover:text-white text-xl"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-3">100% Private</h3>
-                <p class="text-gray-400">Your photos stay on your hardware. No tracking, no data mining, and no third-party access to your precious moments.</p>
-            </div>
-
-            <!-- Feature 2 -->
-            <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700 hover:border-blue-500 transition group">
-                <div class="bg-blue-500/10 w-12 h-12 flex items-center justify-center rounded-lg mb-6 group-hover:bg-blue-500 transition">
-                    <i class="fas fa-bolt text-blue-500 group-hover:text-white text-xl"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-3">Blazing Fast</h3>
-                <p class="text-gray-400">Optimized for speed. Browse through thousands of high-resolution images instantly with smart thumbnail generation.</p>
-            </div>
-
-            <!-- Feature 3 -->
-            <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700 hover:border-blue-500 transition group">
-                <div class="bg-blue-500/10 w-12 h-12 flex items-center justify-center rounded-lg mb-6 group-hover:bg-blue-500 transition">
-                    <i class="fas fa-mobile-alt text-blue-500 group-hover:text-white text-xl"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-3">Responsive Design</h3>
-                <p class="text-gray-400">Access your gallery from your phone, tablet, or desktop. The UI adapts perfectly to any screen size.</p>
-            </div>
+        <!-- Empty State Message -->
+        <div id="empty-state" class="text-center py-20 border-2 border-dashed border-gray-700 rounded-3xl">
+            <i class="fas fa-images text-5xl text-gray-700 mb-4"></i>
+            <p class="text-gray-500">No photos uploaded yet. Click upload to begin!</p>
         </div>
-    </section>
 
-    <!-- About / Tech Section -->
-    <section id="about" class="bg-gray-800/50 py-20 px-8">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-1/2">
-                <h2 class="text-3xl font-bold mb-6">Simple to Deploy. Easy to Maintain.</h2>
-                <p class="text-gray-400 mb-6 text-lg leading-relaxed">
-                    Built with modern web technologies, this project aims to provide a "it just works" experience for users who want to host their own photo library.
-                </p>
-                <ul class="space-y-4">
-                    <li class="flex items-center gap-3">
-                        <i class="fas fa-check-circle text-green-500"></i>
-                        <span>Docker-ready for one-command deployment</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <i class="fas fa-check-circle text-green-500"></i>
-                        <span>Lightweight resource usage</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <i class="fas fa-check-circle text-green-500"></i>
-                        <span>Open source and community driven</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="md:w-1/2 bg-gray-900 p-4 rounded-xl shadow-2xl border border-gray-700">
-                <!-- Mockup / Image Placeholder -->
-                <div class="aspect-video bg-gray-800 rounded-lg flex items-center justify-center overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1554080353-a576cf803bda?auto=format&fit=crop&q=80&w=800" alt="Gallery Preview" class="opacity-80">
-                </div>
-            </div>
+        <!-- Image Grid -->
+        <div id="image-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Uploaded photos will appear here -->
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="py-12 border-t border-gray-800 text-center">
-        <p class="text-gray-500 text-sm mb-4">
-            &copy; 2024 WebSiteofPhoto Project. MIT Licensed.
+        <p class="text-gray-500 text-sm">
+            &copy; 2024 WebSiteofPhoto | Hosted on GitHub Pages
         </p>
-        <div class="flex justify-center space-x-6 text-gray-400">
-            <a href="https://github.com/lowenghup/WebSiteofPhoto" class="hover:text-white transition"><i class="fab fa-github fa-lg"></i></a>
-            <a href="#" class="hover:text-white transition"><i class="fas fa-envelope fa-lg"></i></a>
-        </div>
     </footer>
 
+    <!-- JavaScript to handle the "Upload" simulation -->
+    <script>
+        let photoCount = 0;
+
+        function previewImages(event) {
+            const files = event.target.files;
+            const grid = document.getElementById('image-grid');
+            const emptyState = document.getElementById('empty-state');
+            const countDisplay = document.getElementById('photo-count');
+
+            if (files.length > 0) {
+                emptyState.classList.add('hidden');
+            }
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    // Create Gallery Item
+                    const div = document.createElement('div');
+                    div.className = "group relative aspect-square overflow-hidden rounded-xl bg-gray-800 border border-gray-700";
+                    
+                    div.innerHTML = `
+                        <img src="${e.target.result}" class="object-cover w-full h-full transform group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <button class="text-white bg-red-600 p-2 rounded-full hover:bg-red-700" onclick="this.parentElement.parentElement.remove(); checkEmpty();">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    `;
+                    
+                    grid.appendChild(div);
+                    photoCount++;
+                    countDisplay.innerText = `${photoCount} Photos`;
+                }
+
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function checkEmpty() {
+            const grid = document.getElementById('image-grid');
+            const emptyState = document.getElementById('empty-state');
+            const countDisplay = document.getElementById('photo-count');
+            
+            photoCount--;
+            countDisplay.innerText = `${photoCount} Photos`;
+
+            if (grid.children.length === 0) {
+                emptyState.classList.remove('hidden');
+                photoCount = 0;
+                countDisplay.innerText = `0 Photos`;
+            }
+        }
+    </script>
 </body>
 </html>
